@@ -49,8 +49,8 @@ class Dobot2DModule
 
     send.x = L2*sin(a2)+L1*cos(a1);
     send.y = L2*cos(a2)-L1*sin(a1)+L3;
-    
-    
+
+
     pushMatrix();
     convertToFrontQuadOrigin();
     drawFrontHead(L2*sin(a2)+L1*cos(a1), L2*cos(a2)-L1*sin(a1)+L3);
@@ -64,7 +64,7 @@ class Dobot2DModule
   {
     /////////////////////// limit the dobot in the lawable region ///////////////////
     a3 = constrain(a3, -3*QUARTER_PI, 3*QUARTER_PI);
-    
+
     /////////////////////////////////////////////////////////////////////
     /////////caculate the a1 and a2 (angle1 and angle2)//////////////////
     float A = -2 * x * L1;
@@ -113,15 +113,16 @@ class Dobot2DModule
     fill(255);
     ellipse(160, 0, 10, 10);
     rect(35.5, 15, 92, 14, 7);
-    
+
     pushMatrix(); //the word is not the right position, this step is to print the logo "dobot" correctly; 
-    scale(1,-1);
+    scale(1, -1);
+    
     fill(0, 102, 153);
+    textFont(dobotWord, 12);
     text("dobot", 66, -36);
     popMatrix();
-    
-    popMatrix();
 
+    popMatrix();
   }
 
   private void drawFrontBigArm(float pointX, float pointY, float angle)
@@ -134,16 +135,16 @@ class Dobot2DModule
     beginShape();
     vertex(21.38, 0);
     vertex(115.5, 0);
-    vertex(143,11.8);
+    vertex(143, 11.8);
     vertex(135, 49);
     vertex(0, 49);
     vertex(-19.2, 9.4);
-    vertex(0,-20);
+    vertex(0, -20);
     endShape(CLOSE);
-    arc(0,0, 42.7,42.7, radians(-210),radians(1), OPEN);//this arc position need to be accuratly
-    arc(143,11.8, 60, 60, radians(-158), radians(102), OPEN);//this arc position need to be accuratly
+    arc(0, 0, 42.7, 42.7, radians(-210), radians(1), OPEN);//this arc position need to be accuratly
+    arc(143, 11.8, 60, 60, radians(-158), radians(102), OPEN);//this arc position need to be accuratly
     strokeWeight(1);
-    ellipse(143,11.8, 53, 53);
+    ellipse(143, 11.8, 53, 53);
 
     fill(255);
     strokeWeight(3);

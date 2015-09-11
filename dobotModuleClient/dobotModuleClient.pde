@@ -11,7 +11,7 @@ float MINA1 = -15*PI/360;
 float MAXA1 = PI/2;
 float MINA2 = 0;
 float MAXA2 = PI/2;
-PFont dobotWord;
+PFont dobotWord,coorWord;
 /////////////////////////////////////////////////////////////////////
 //////////////////////////some UI data///////////////////////////////
 float frontScaleRatio = 1.5;             //enlarge to fit screen
@@ -46,7 +46,8 @@ void setup()
   size(1200, 600);
   smooth();
   dobotWord = loadFont("STHupo-24.vlw");
-  textFont(dobotWord, 12);
+  coorWord = loadFont("NI7SEG-48.vlw");
+
 }
 
 void draw()
@@ -75,6 +76,16 @@ void draw()
   //ellipse(width-border-topRadius, height-border-topRadius, 2*topRadius, 2*topRadius);//the top ellipse;
   arc(width-border-topRadius, 2*border+topRadius, 2*topRadius, 2*topRadius, -5*QUARTER_PI, QUARTER_PI, CHORD);
 
+  fill(100);
+  textFont(coorWord, 48);
+
+String stringX = send.x==0 ? "000.0" : Float.toString(send.x).substring(0,5);
+String stringY = send.y==0 ? "000.0" : Float.toString(send.y).substring(0,5);
+String stringA3 = send.A3==0 ? "000.0" : Float.toString(send.A3).substring(0,5);
+
+text("x  : "+stringX,850,400);
+text("Y  : "+stringY,850,450);
+text("A3: "+stringA3,850,500);
 
   /////////////////////////////////////////////////////////////////////
   /////////////////////the front dobot easing move/////////////////////
