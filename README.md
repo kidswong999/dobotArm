@@ -10,6 +10,7 @@ Dobot
 the computer catch the position of target such as (x,y), (maybe a3), and calculate the a1 and a2, draw module with them in the screen.
 
 **input: the target position(x,y)**
+
 **output: the 3 angles(a1,a2) **
 
 	float A,B,C;              //temp variables
