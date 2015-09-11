@@ -9,23 +9,24 @@ Dobot
 ------------------------------------------------------------------
 the computer catch the position of target such as (x,y), (maybe a3), and calculate the a1 and a2, draw module with them in the screen.
 
-**input: the target position(x,y)**
+**calculate a1:**
+$$A = -2 * x * L1;$$
 
-**output: the 3 angles(a1,a2) **
+$$B = 2 * (y-L3)*L1;$$
 
-	float A,B,C;              //temp variables
-	float x,y;                //input
-	float a1,a2;              //output
-    A = -2 * x * L1;
-    B = 2 * (y-L3)*L1;
-    C = sq(L2) - sq(L1) - sq(x) - sq(y-L3);
+$$C = - x^2 - L1^2 + L2^2 - (y-L3)^2$$
 
-    a1 = 2*atan((B-sqrt(sq(B)+sq(A)-sq(C)))/(A+C))
-    A = 2 * (y-L3) * L2;
-    B = 2 * x * L2;
-    C = sq(L2) + sq(x) + sq(L3 - y) - sq(L1) ;
+$$a1 = \frac{2*arctan((B-\sqrt{B^2+A^2-C^2})}{A+C}$$
 
-    a2 =2*atan((B-sqrt(sq(B)+sq(A)-sq(C)))/(A+C))
+**calculate a2:**
+$$ A = 2 * (y-L3) * L2;$$
+
+$$ B = 2 * x * L2;$$
+
+$$ C = x^2 - L1^2 + L2^2 + (L3 - y)^2 $$
+
+$$a2 = \frac{2*arctan((B-\sqrt{B^2+A^2-C^2})}{A+C}$$
+
 
 3 communication Protocol
 ---------------------------------------------------------------------
@@ -58,12 +59,7 @@ later Lower machine send data requestPackage{} per 60ms.
 after resceived the requestPackage{}, PC send controlPackage{}.
 
 
-c
-		
-		code
-		
-
-c++
+c/c++
 		
 		code
 		
