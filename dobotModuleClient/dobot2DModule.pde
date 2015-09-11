@@ -64,7 +64,20 @@ class Dobot2DModule
   {
     /////////////////////// limit the dobot in the lawable region ///////////////////
     a3 = constrain(a3, -3*QUARTER_PI, 3*QUARTER_PI);
-
+    if (x<60)
+    {
+      x = 120 - x;
+    }
+    if (y<0)
+    {
+      y = 0;
+    }
+    float R = sqrt(sq(x) + sq(y-L3));//the radius;
+    if (R > MAXRADIUS)
+    {
+      x = x*MAXRADIUS/R;
+      y = L3+(y-L3)*MAXRADIUS/R;
+    }
     /////////////////////////////////////////////////////////////////////
     /////////caculate the a1 and a2 (angle1 and angle2)//////////////////
     float A = -2 * x * L1;
@@ -110,13 +123,13 @@ class Dobot2DModule
     vertex(171, 0);
     endShape(CLOSE);
     arc(157.5, 7.25, 34.5, 34.5, radians(-155), radians(40), OPEN);//this arc position need to be accuratly
-    fill(255);
+    fill(background);
     ellipse(160, 0, 10, 10);
     rect(35.5, 15, 92, 14, 7);
 
     pushMatrix(); //the word is not the right position, this step is to print the logo "dobot" correctly; 
     scale(1, -1);
-    
+
     fill(0, 102, 153);
     textFont(dobotWord, 12);
     text("dobot", 66, -36);
@@ -146,7 +159,7 @@ class Dobot2DModule
     strokeWeight(1);
     ellipse(143, 11.8, 53, 53);
 
-    fill(255);
+    fill(background);
     strokeWeight(3);
     rect(41, 14, 63.5, 16, 8);
     popMatrix();
@@ -167,7 +180,7 @@ class Dobot2DModule
     endShape();
 
     arc(pointX+15, pointY+26, 18, 18, 0, radians(168));
-    fill(255);
+    fill(background);
     ellipse(pointX+15, pointY+26, 6, 6);
   }
   private void drawFrontBase()

@@ -11,7 +11,7 @@ float MINA1 = -15*PI/360;
 float MAXA1 = PI/2;
 float MINA2 = 0;
 float MAXA2 = PI/2;
-PFont dobotWord,coorWord;
+PFont dobotWord, coorWord;
 /////////////////////////////////////////////////////////////////////
 //////////////////////////some UI data///////////////////////////////
 float frontScaleRatio = 1.5;             //enlarge to fit screen
@@ -23,6 +23,10 @@ float frontOriginTrainlateY = 0.25;
 int border = 10;                         //the UI ...er a border width
 int frontQuadWidth = 800;
 int topRadius = 185;
+
+color background = color(230,245,245);
+int r=0, g=0, b=0;
+int counter=0;
 //////////////////////////////////////////////////////////////////////
 
 /////////////////////////////////////////////////////////////////////
@@ -47,7 +51,6 @@ void setup()
   smooth();
   dobotWord = loadFont("STHupo-24.vlw");
   coorWord = loadFont("NI7SEG-48.vlw");
-
 }
 
 void draw()
@@ -65,9 +68,8 @@ void draw()
     real.A3 = send.A3;
     isSended = true;
   }
-  /////////////////////////////////////////////////////////////////////
-  //////////////draw the UI//////////////////////////////////////////
-  background(255);
+
+background(background);
   strokeWeight(2);
   noFill();
   quad(border, border, frontQuadWidth+border, border, frontQuadWidth+border, height-8*border, border, height-8*border);//the front quad
@@ -79,13 +81,13 @@ void draw()
   fill(100);
   textFont(coorWord, 48);
 
-String stringX = send.x==0 ? "000.0" : Float.toString(send.x).substring(0,5);
-String stringY = send.y==0 ? "000.0" : Float.toString(send.y).substring(0,5);
-String stringA3 = send.A3==0 ? "000.0" : Float.toString(send.A3).substring(0,5);
+  String stringX = send.x==0 ? "000.0" : Float.toString(send.x).substring(0, 5);
+  String stringY = send.y==0 ? "000.0" : Float.toString(send.y).substring(0, 5);
+  String stringA3 = send.A3==0 ? "000.0" : Float.toString(degrees(send.A3)).substring(0, 5);
 
-text("x  : "+stringX,850,400);
-text("Y  : "+stringY,850,450);
-text("A3: "+stringA3,850,500);
+  text("x: "+stringX, 885, 400);
+  text("Y: "+stringY, 885, 450);
+  text("A3: "+stringA3, 850, 500);
 
   /////////////////////////////////////////////////////////////////////
   /////////////////////the front dobot easing move/////////////////////
@@ -132,11 +134,11 @@ void mousePressed()
   {
     float tempX = (mouseX - (width-border-topRadius))/topScaleRatio;
     float tempY = ((2*border+topRadius) - mouseY)/topScaleRatio;
-    
-    if(tempX>0)
+
+    if (tempX>0)
     {
       target.A3 =  HALF_PI-atan(tempY/tempX);
-    }else
+    } else
     {
       target.A3 =  -HALF_PI-atan(tempY/tempX);
     }
@@ -155,11 +157,11 @@ void mouseDragged()
   {
     float tempX = (mouseX - (width-border-topRadius))/topScaleRatio;
     float tempY = ((2*border+topRadius) - mouseY)/topScaleRatio;
-    
-    if(tempX>0)
+
+    if (tempX>0)
     {
       target.A3 =  HALF_PI-atan(tempY/tempX);
-    }else
+    } else
     {
       target.A3 =  -HALF_PI-atan(tempY/tempX);
     }
