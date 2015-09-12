@@ -2,11 +2,11 @@ Dobot
 ================================================
 ![image](https://github.com/kidswong999/dobotArm/raw/master/doc/media/dobot_logo.png)
 
-1.machine sketch
+1.Machine Sketch
 -----------------------------------------------
 ![image](https://github.com/kidswong999/dobotArm/raw/master/doc/media/3D_coordinary.png)
 
-2 communication Protocol
+2 Communication Protocol
 ---------------------------------------------------------------------
 ####1 Parameters setting
 Baud rate:256000.
