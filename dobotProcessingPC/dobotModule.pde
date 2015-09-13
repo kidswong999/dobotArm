@@ -17,21 +17,6 @@ class Dobot2DModule
 {
   void displayFront(float x, float y)//in the front quad(the biggest quad)
   {
-    /////////////////////// limit the dobot in the lawable region ///////////////////
-    if (x<60)
-    {
-      x = 120 - x;
-    }
-    if (y<0)
-    {
-      y = 0;
-    }
-    float R = sqrt(sq(x) + sq(y-L3));//the radius;
-    if (R > MAXRADIUS)
-    {
-      x = x*MAXRADIUS/R;
-      y = L3+(y-L3)*MAXRADIUS/R;
-    }
     /////////////////////////////////////////////////////////////////////
     /////////caculate the a1 and a2 (angle1 and angle2)//////////////////
     float A = -2 * x * L1;
@@ -45,11 +30,6 @@ class Dobot2DModule
 
     float a2 = constrain(2*atan((B-sqrt(sq(B)+sq(A)-sq(C)))/(A+C)), MINA2, MAXA2);
     /////////////////////////////////////////////////////////////////////
-
-
-    send.x = L2*sin(a2)+L1*cos(a1);
-    send.y = L2*cos(a2)-L1*sin(a1)+L3;
-
 
     pushMatrix();
     convertToFrontQuadOrigin();
@@ -62,23 +42,7 @@ class Dobot2DModule
 
   void displayTop(float x, float y, float a3)//the x and y is the front view axis
   {
-    /////////////////////// limit the dobot in the lawable region ///////////////////
-    a3 = constrain(a3, -3*QUARTER_PI, 3*QUARTER_PI);
-    if (x<60)
-    {
-      x = 120 - x;
-    }
-    if (y<0)
-    {
-      y = 0;
-    }
-    float R = sqrt(sq(x) + sq(y-L3));//the radius;
-    if (R > MAXRADIUS)
-    {
-      x = x*MAXRADIUS/R;
-      y = L3+(y-L3)*MAXRADIUS/R;
-    }
-    /////////////////////////////////////////////////////////////////////
+
     /////////caculate the a1 and a2 (angle1 and angle2)//////////////////
     float A = -2 * x * L1;
     float B = 2 * (y-L3)*L1;
@@ -91,8 +55,6 @@ class Dobot2DModule
 
     float a2 = constrain(2*atan((B-sqrt(sq(B)+sq(A)-sq(C)))/(A+C)), MINA2, MAXA2);
     /////////////////////////////////////////////////////////////////////
-
-    send.A3 = a3;
 
 
     float prjBigLength = L2 * sin(a2);
@@ -320,4 +282,3 @@ class Dobot2DModule
     scale(topScaleRatio, -topScaleRatio);
   }
 }
-

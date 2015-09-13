@@ -5,14 +5,14 @@ void dobotSerialBegin()
     String portName = Serial.list()[0];
     myPort = new Serial(this, portName, 256000);
     myPort.bufferUntil(0x5a);
-    println(portName); //<>//
+    println(portName);
     serialEn = true;
 
     while (myPort.available () == 0)
     {
       println(hex(myPort.read()));
     }
-    while (myPort.available ()>0) //<>//
+    while (myPort.available ()>0)
     {
       println(hex(myPort.read()));
     }
@@ -134,4 +134,3 @@ byte[] float2byte(float f)
 //  l |= ((long) b[index + 3] << 24);                  
 //  return Float.intBitsToFloat(l);
 //} 
-
