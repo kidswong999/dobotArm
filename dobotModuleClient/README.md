@@ -8,10 +8,10 @@ dobot client processing PC
 
 ![image](https://github.com/kidswong999/dobotArm/raw/master/doc/media/defines2.png)
 
-2.diagram
+2.flow diagram
 -----------------------------------------------------------
 
-
+![image](https://github.com/kidswong999/dobotArm/raw/master/dobotModuleClient/data/pic/coordinateFlowChart.png)
 
 3.calculate
 ------------------------------------------------------------------
