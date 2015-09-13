@@ -11,7 +11,7 @@ dobot client processing PC
 2.flow diagram
 -----------------------------------------------------------
 
-![image](https://github.com/kidswong999/dobotArm/raw/master/dobotModuleClient/data/pic/coordinateFlowChart.png)
+![image](https://github.com/kidswong999/dobotArm/raw/master/doc/media/coorFlowChart.png)
 
 3.calculate
 ------------------------------------------------------------------

@@ -35,7 +35,7 @@ Dobot2DModule myDobotModule = new Dobot2DModule();
 Coordinate2D catched = new Coordinate2D(L2*cos(PI/4) + L1*sin(PI/4), L3 + L2*sin(PI/4) - L1*cos(PI/4), 0);
 Coordinate2D target = new Coordinate2D(L2*cos(PI/4) + L1*sin(PI/4), L3 + L2*sin(PI/4) - L1*cos(PI/4), 0);
 Coordinate2D display = new Coordinate2D(L2*cos(PI/4) + L1*sin(PI/4), L3 + L2*sin(PI/4) - L1*cos(PI/4), 0);
-Coordinate2D real = new Coordinate2D(L2*cos(PI/4) + L1*sin(PI/4), L3 + L2*sin(PI/4) - L1*cos(PI/4), 0);
+Coordinate2D lastTarget = new Coordinate2D(L2*cos(PI/4) + L1*sin(PI/4), L3 + L2*sin(PI/4) - L1*cos(PI/4), 0);
 
 
 ///////////////////////////some program flags////////////////////////
@@ -56,20 +56,15 @@ void draw()
 {
   if (serialEn && !isSended)
   {
-    float sendX = -(target.x*cos(target.A3)-real.x*cos(real.A3));//the machine's axis is not same as the module, so the sendCoordinate is plus a negtive sign;
-    float sendY = -(target.x*sin(target.A3)-real.x*sin(real.A3));
-    float sendZ = (target.y-real.y);
+    float sendX = -(target.x*cos(target.A3)-lastTarget.x*cos(lastTarget.A3));//the machine's axis is not same as the module, so the sendCoordinate is plus a negtive sign;
+    float sendY = -(target.x*sin(target.A3)-lastTarget.x*sin(lastTarget.A3));
+    float sendZ = (target.y-lastTarget.y);
 
     sendDeltaXYZ(sendX, sendY, sendZ, 0, 0, 2*sqrt(sq(sendX) + sq(sendY) + sq(sendZ)));
 
-    println("send.x " + target.x + "\tsend.y " + target.y + "\tsend.A3 " + target.A3);
-    println("real.x " + real.x + "\treal.y " + real.y + "\treal.A3 " + real.A3);
-    println("sendX " + sendX + "\tsendY " + sendY + "\tsendZ " + sendZ);
-    println();
-
-    real.x = target.x;
-    real.y = target.y;
-    real.A3 = target.A3;
+    lastTarget.x = target.x;
+    lastTarget.y = target.y;
+    lastTarget.A3 = target.A3;
     isSended = true;
   }
   target = limitInLaw(catched);
