@@ -4,7 +4,7 @@ Dobot
 
 1.Machine Sketch
 -----------------------------------------------
-![image](https://github.com/kidswong999/dobotArm/raw/master/doc/media/3D_coordinary.png)
+![image](https://github.com/kidswong999/dobotArm/raw/master/doc/media/3D_coor.png)
 
 2 Communication Protocol
 ---------------------------------------------------------------------
