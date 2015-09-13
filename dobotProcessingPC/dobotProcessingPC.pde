@@ -86,13 +86,13 @@ void draw()
   fill(100);
   textFont(coorWord, 48);
 
-  String stringX = display.x<=0 ? "000.0" : (Float.toString(display.x)+"00000").substring(0, 5);
-  String stringY = display.y<=0 ? "000.0" : (Float.toString(display.y)+"00000").substring(0, 5);
-  String stringA3 = display.A3==0 ? "000.0" : Float.toString(degrees(display.A3)).substring(0, 5);
+  String stringX = (Float.toString(display.x*cos(display.A3))+"00000").substring(0, 5);
+  String stringY = (Float.toString(display.y*sin(display.A3))+"00000").substring(0, 5);
+  String stringZ = (Float.toString(display.y)+"00000").substring(0, 5);
 
   text("x: "+stringX, 885, 400);
   text("Y: "+stringY, 885, 450);
-  text("A3: "+stringA3, 850, 500);
+  text("Z: "+stringZ, 885, 500);
 
   /////////////////////////////////////////////////////////////////////
   /////////////////////the front dobot easing move/////////////////////
