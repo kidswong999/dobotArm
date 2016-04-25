@@ -1,3 +1,9 @@
+I'm sorry, but the repository is not going to be updated.
+ATTENTION! the protocol can't use.
+If you want to get software, please click the offical websit.
+http://dobot.cc/
+Ofcourse, you can fork the repository and fit protocol to work. 
+
 Dobot
 ================================================
 ![image](https://github.com/kidswong999/dobotArm/raw/master/doc/media/dobot_logo.png)
